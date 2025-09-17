@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Prog6212Part1.Models.Claims>
+
+@{
+    ViewData["Title"] = "Claims List";
+}
+
+<div class="container mt-5">
+    <div class="card shadow-sm border-0">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">Submitted Claims</h4>
+        </div>
+
+        <div class="card-body">
+            @if (!Model.Any())
+            {
+                <div class="alert alert-info">
+                    No claims have been submitted yet.
+                </div>
+            }
+            else
+            {
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle table-bordered">
+                        <thead class="table-light text-center">
+                            <tr>
+                                <th>ID</th>
+                                <th>Lecturer ID</th>
+                                <th>Name</th>
+                                <th>Claim Period</th>
+                                <th>Hours</th>
+                                <th>Rate (R)</th>
+                                <th>Total (R)</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var claim in Model)
+                            {
+                                <tr>
+                                    <td class="text-center">@claim.Id</td>
+                                    <td>@claim.LecturerID</td>
+                                    <td>@claim.FirstName @claim.LastName</td>
+                                    <td>
+                                        <small>
+                                            @claim.ClaimsPeriodsStart.ToString("dd/MM/yyyy")
+                                            <br />
+                                            to
+                                            <br />
+                                            @claim.ClaimsPeriodsEnd.ToString("dd/MM/yyyy")
+                                        </small>
+                                    </td>
+                                    <td class="text-center">@claim.HoursWorked</td>
+                                    <td class="text-center">@claim.RateHour.ToString("0.00")</td>
+                                    <td class="text-center fw-bold text-success">
+                                        @(claim.HoursWorked * claim.RateHour).ToString("0.00")
+                                    </td>
+                                    <td>@claim.DescriptionOfWork</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+        </div>
+    </div>
+</div>

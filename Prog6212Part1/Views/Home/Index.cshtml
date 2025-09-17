@@ -2,7 +2,33 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<style>
+    .animated-text {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #007bff;
+        animation: fadeIn 2s ease-in-out;
+    }
+
+
+    @@keyframes fadeIn {
+        from
+
+    {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    }
+</style>
+
+<div class="container text-center mt-5">
+    <div class="animated-text">Welcome to the Contract Monthly Claim System</div>
+    <p class="lead mt-3">Secure. Efficient. Transparent. Manage your academic claims with ease.</p>
+    <a class="btn btn-success btn-lg mt-4" asp-controller="Claims" asp-action="Claims">Get Started</a>
 </div>
