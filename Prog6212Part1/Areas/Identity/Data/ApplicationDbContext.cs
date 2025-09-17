@@ -27,6 +27,6 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
         // Add your customizations after calling base.OnModelCreating(builder);
     }
 
-    public DbSet<Prog6212_Part1.Models.Roles> Roles { get; set; } = default!;
+    public DbSet<Prog6212Part1.Models.Roles> Roles { get; set; } = default!;
 
 }

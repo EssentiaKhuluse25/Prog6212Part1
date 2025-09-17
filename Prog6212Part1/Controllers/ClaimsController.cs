@@ -2,8 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Prog6212_Part1.Areas.Identity.Data;
-using Prog6212_Part1.Models;
+using Prog6212Part1.Areas.Identity.Data;
+using Prog6212Part1.Models;
 using Prog6212Part1.Areas.Identity.Data;
 
 namespace Prog6212_Part1.Controllers
