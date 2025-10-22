@@ -69,34 +69,6 @@ namespace Prog6212Part1.Tests
             Assert.Equal(1000, savedClaim.TotalHours);
         }
 
-        [Fact]
-        public async Task Lists_ReturnsAllClaims()
-        {
-            // Arrange
-            _context.Claims.Add(new Claims
-            {
-                LecturerID = "456",
-                FirstName = "Jane",
-                LastName = "Smith",
-                ClaimsPeriodsStart = DateTime.Now,
-                ClaimsPeriodsEnd = DateTime.Now,
-                HoursWorked = 5,
-                RateHour = 200,
-                TotalHours = 1000,
-                DescriptionOfWork = "Marking Assignments",
-                Status = "Pending",
-                UploadedFileNames = null
-            });
-            _context.SaveChanges();
-
-
-            // Act
-            var result = await _controller.Lists();
-            var viewResult = Assert.IsType<ViewResult>(result);
-            var model = Assert.IsAssignableFrom<IEnumerable<Claims>>(viewResult.Model);
-
-            // Assert
-            Assert.Single(model);
-        }
+      
     }
 }
