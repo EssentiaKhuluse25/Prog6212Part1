@@ -31,6 +31,7 @@
                                 <th>Rate (R)</th>
                                 <th>Total (R)</th>
                                 <th>Description</th>
+                                <th>Supporting Documents</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -52,9 +53,25 @@
                                     <td class="text-center">@claim.HoursWorked</td>
                                     <td class="text-center">@claim.RateHour.ToString("0.00")</td>
                                     <td class="text-center fw-bold text-success">
-                                        @(claim.HoursWorked * claim.RateHour).ToString("0.00")
+                                        R @(claim.TotalHours.ToString("0.00"))
                                     </td>
                                     <td>@claim.DescriptionOfWork</td>
+                                    <td>
+                                        @if (!string.IsNullOrEmpty(claim.UploadedFileNames))
+                                        {
+                                            var fileNames = claim.UploadedFileNames.Split(",");
+                                            foreach (var fileName in fileNames)
+                                            {
+                                                <a href="@Url.Content($"~/uploads/{fileName}")" target="_blank">@fileName</a>
+                                
+                                                <br />
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <span class="text-muted">No files</span>
+                                        }
+                                    </td>
                                 </tr>
                             }
                         </tbody>

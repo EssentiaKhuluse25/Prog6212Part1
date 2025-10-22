@@ -37,6 +37,11 @@ namespace Prog6212Part1.Models
         // Mark this property as NotMapped so EF doesn't try to map it to the database
         [NotMapped]
         public List<IFormFile> SupportingDocuments { get; set; }
+
+        [Required]
+        public string Status { get; set; } = "Pending"; // default status
+        public string? UploadedFileNames { get; set; } // comma-separated string
+
     }
 }
 

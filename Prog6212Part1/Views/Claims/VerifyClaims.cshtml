@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Prog6212Part1.Models.Claims>
+
+<h2>Pending Claims for Verification</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Lecturer</th>
+            <th>Period</th>
+            <th>Total</th>
+            <th>Status</th>
+            <th>Supporting Docs</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Where(c => c.Status == "Pending"))
+        {
+            <tr>
+                <td>@item.FirstName @item.LastName</td>
+                <td>@item.ClaimsPeriodsStart.ToShortDateString() - @item.ClaimsPeriodsEnd.ToShortDateString()</td>
+                <td>R @(item.TotalHours)</td>
+                <td>@item.Status</td>
+                <td>
+                    @foreach (var file in item.UploadedFileNames?.Split(",") ?? Array.Empty<string>())
+                    {
+                        <a href="@Url.Content("~/uploads/" + file)" target="_blank">View</a>
+                
+                        <br />
+                    }
+                </td>
+                <td>
+                    <form asp-action="Approve" asp-route-id="@item.Id" method="post" style="display:inline;">
+                        <button class="btn btn-success">Approve</button>
+                    </form>
+                    <form asp-action="Reject" asp-route-id="@item.Id" method="post" style="display:inline;">
+                        <button class="btn btn-danger">Reject</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
